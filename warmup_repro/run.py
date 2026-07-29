@@ -65,7 +65,11 @@ def main() -> int:
     if observed_hash != expected_hash:
         errors.append(f"historical verdict hash mismatch: {observed_hash}")
 
-    manifest = (ARTIFACTS / "judged_space_manifest.sha256").read_text().splitlines()
+    manifest = [
+        line
+        for line in (ARTIFACTS / "judged_space_manifest.sha256").read_text().splitlines()
+        if line.strip()
+    ]
     if len(manifest) != 13:
         errors.append(f"protected manifest has {len(manifest)} entries, expected 13")
 
