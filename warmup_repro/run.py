@@ -56,6 +56,11 @@ def main() -> int:
     os.environ.setdefault("MKL_NUM_THREADS", "1")
 
     config = json.loads((ROOT / "warmup_repro" / "config.json").read_text())
+    if config["stage"] == "fineweb_exact_scale":
+        from warmup_repro.fineweb_lm import run_fineweb
+
+        return run_fineweb(config, started)
+
     if config["stage"] == "certificates_and_scales":
         from warmup_repro.certificates import run_certificates
 

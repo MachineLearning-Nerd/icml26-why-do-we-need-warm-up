@@ -1,5 +1,5 @@
 {
-  "stage": "certificates_and_scales",
-  "expected_cores": 16,
+  "stage": "fineweb_exact_scale",
+  "expected_cores": 64,
   "seed": 20260729
 }
