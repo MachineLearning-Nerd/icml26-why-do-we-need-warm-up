@@ -1,0 +1,11 @@
+{
+  "claim": 6,
+  "models": ["ResNet50", "ViT-Tiny"],
+  "dataset": "official ImageNet32 training split",
+  "optimizer": "SGD",
+  "learning_rate": 0.0001,
+  "gradient_clip": 1.0,
+  "seeds": [100, 101, 102],
+  "steps_per_seed": 30,
+  "acceptance": "for each model: pooled positive slope with 95% bootstrap lower bound > 0, permutation p <= 0.05, and at least 2/3 positive seed slopes"
+}

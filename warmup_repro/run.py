@@ -56,6 +56,11 @@ def main() -> int:
     os.environ.setdefault("MKL_NUM_THREADS", "1")
 
     config = json.loads((ROOT / "warmup_repro" / "config.json").read_text())
+    if config["stage"] == "imagenet32_exact_architectures":
+        from warmup_repro.imagenet32 import run_imagenet32
+
+        return run_imagenet32(config, started)
+
     if config["stage"] == "certificates_and_scales":
         from warmup_repro.certificates import run_certificates
 
