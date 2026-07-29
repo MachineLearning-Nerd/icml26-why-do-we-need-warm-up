@@ -1,0 +1,11 @@
+{
+  "route": "exact theorem counterexamples",
+  "claims": [1, 2, 4, 5],
+  "acceptance": [
+    "every counterexample satisfies the exact displayed assumptions",
+    "a symbolic calculation and independent autograd or direct iteration agree",
+    "the contradiction is strict",
+    "a control that restores the omitted condition removes the contradiction",
+    "scope is limited to the statement actually contradicted"
+  ]
+}
