@@ -36,7 +36,7 @@ routes, then the cumulative release node. Every node uses:
 uv run --frozen python -m warmup_repro.run
 ```
 
-The winning branch is `orx/cumulative-claim-release-candidate`. Its final SHA
+The winning branch is `orx/final-evaluator-visible-release-gate`. Its final SHA
 is the exact commit referenced by the published manifest and OpenResearch run.
 
 ## Evidence and compute

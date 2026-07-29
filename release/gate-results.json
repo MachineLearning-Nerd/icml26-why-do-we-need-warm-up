@@ -1,15 +1,24 @@
 {
-  "status": "PENDING_FINAL_VALIDATION",
+  "status": "PASS",
   "candidate_source": "fresh copy of judged Space revision 17e423af3b04b3c0fb493ccfdc26a9724a2be53c plus exact text allowlist",
   "canonical_entrypoint": "CURRENT.md",
-  "old_file_set_subset": null,
-  "historical_page_byte_identical": null,
-  "candidate_json_valid": null,
-  "links_resolve": null,
-  "text_only_allowlist": null,
-  "secret_scan": null,
-  "marimo_check": null,
-  "cumulative_verifier": null,
+  "old_file_set_subset": true,
+  "historical_page_byte_identical": true,
+  "original_logbook_json_semantically_identical_to_archive": true,
+  "candidate_json_valid": true,
+  "links_resolve": true,
+  "text_only_allowlist": true,
+  "secret_scan": "PASS",
+  "marimo_check": "PASS",
+  "cumulative_verifier": {
+    "status": "PASS",
+    "run_id": "536acc63-6cc4-4ea3-93c3-b35ff46a4456",
+    "git_sha": "90840542641c468b05c58665781ecb10d599785c",
+    "expected_cores": 1,
+    "torch_threads": 1,
+    "visible_cpus": 8,
+    "runtime_seconds": 14.805047
+  },
   "blind_review_1": "completed_with_missing_vision_artifacts",
   "blind_review_2": "completed_after_fixes"
 }
