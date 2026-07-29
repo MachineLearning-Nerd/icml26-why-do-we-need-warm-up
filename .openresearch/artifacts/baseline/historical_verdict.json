@@ -1,0 +1,42 @@
+{
+  "space_id": "DineshAI/a6fo32UnpU",
+  "orid": "a6fo32UnpU",
+  "paper_title": "Why Do We Need Warm-up? A Theoretical Perspective",
+  "sha": "17e423af3b04b3c0fb493ccfdc26a9724a2be53c",
+  "judged_at": "2026-07-29T10:39:51+00:00",
+  "model": "zai-org/GLM-5.2",
+  "claims": [
+    {
+      "claim": "The paper generalizes (L0,L1)-smoothness to (H0,H1)-smoothness (Definition 3.1), bounding the Hessian norm as H0 + H1 times the function sub-optimality f(w) - f* rather than the gradient norm (Section 3, Definition 3.1).",
+      "verdict": "toy",
+      "evidence": "The logbook verifies the (H0,H1)-smoothness definition on a 1D cosh extremal function (f''=H0+H1*f exactly, max error 0) and checks closure under sums/affine at machine precision, but this is a single 1D toy function, not a demonstration at the scale or dimensionality relevant to the paper's claims."
+    },
+    {
+      "claim": "Proposition 3.1 and 3.2 show the (H0,H1)-smoothness condition holds for deep linear networks with MSE loss under weight balancedness and for deep non-linear networks with one leaky-ReLU layer under MSE loss (Section 3.1).",
+      "verdict": "toy",
+      "evidence": "Numeric Hessian curvature-vs-suboptimality slopes (0.486 for deep linear, 0.496 for leaky-ReLU, both ≤1) are computed on extremely small networks (2×2×2 linear with 4 data points, 1×8×2 leaky-ReLU with 6 data points), far below any realistic scale."
+    },
+    {
+      "claim": "Propositions 3.3 and 3.4 extend the condition to two-layer networks with MSE loss under L2 regularization and to two-layer networks with cross-entropy loss (Section 3.1).",
+      "verdict": "toy",
+      "evidence": "Curvature-vs-suboptimality slopes (-0.105 for CE+L2, 0.442 for MSE+L2, both ≤1) are checked on tiny networks (1×4×3 with 8 data points), a clearly simplified setup with real runs but not at a scale that constitutes full reproduction."
+    },
+    {
+      "claim": "Theorem 4.1 gives a lower bound showing gradient descent with a constant step-size requires substantially more iterations when poorly initialized, while Theorem 4.2 proves that under the Aiming condition, GD with the adaptive step-size eta_k = 1/(10*H0 + 20*H1*(f(w_k)-f*)) converges in O(H0*dist(w0,S)^2/(theta^2*eps) + H1*dist(w0,S)^2/theta^2) iterations, faster than any fixed step-size (Theorems 4.1-4.2).",
+      "verdict": "toy",
+      "evidence": "GD sweeps on the 1D cosh extremal function show K_fixed growing 58→2852 with initial loss while K_adaptive stays flat (125→200, 14.3x speedup), demonstrating the qualitative prediction of Theorems 4.1-4.2, but only on a single 1D function rather than general (H0,H1)-smooth objectives."
+    },
+    {
+      "claim": "Theorem 4.3 extends the convergence results to mu-Polyak-Lojasiewicz functions (Theorem 4.3).",
+      "verdict": "toy",
+      "evidence": "Linear convergence (10.9 iters/decade, R²=0.9999) is demonstrated on a 3D separable cosh function, confirming the log(1/eps) rate of Theorem 4.3, but this is a simplified separable toy objective, not a general mu-PL function."
+    },
+    {
+      "claim": "Section 3.2 empirically validates the (H0,H1)-smoothness condition on Transformer language models (70M, 160M, 410M parameters) trained on FineWeb and on ResNet50/ViT-Tiny trained on ImageNet32, finding local curvature grows approximately linearly with training loss early in training (Section 3.2).",
+      "verdict": "inconclusive",
+      "evidence": "The logbook explicitly defers this claim without any experiments on Transformer LMs (70M/160M/410M on FineWeb) or ResNet50/ViT-Tiny on ImageNet32; no data, runs, or artifacts are provided for this empirical claim."
+    }
+  ],
+  "overall": "The logbook provides sound numerical evidence on toy-scale instances (1D extremal functions, tiny 2-8 neuron networks) for the theoretical claims 1-5, checking curvature growth rates and convergence behavior with real runs and numbers, but does not address the large-scale empirical claim (claim 6) at all. All verified setups are clearly simplified proxies of the paper's full scope.",
+  "quality": "medium"
+}

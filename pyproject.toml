@@ -1,0 +1,23 @@
+[project]
+name = "warmup-reproduction"
+version = "0.1.0"
+description = "Claim-by-claim reproduction of Why Do We Need Warm-up?"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "datasets>=4,<5",
+  "marimo>=0.15,<1",
+  "matplotlib>=3.10,<4",
+  "numpy>=2.3,<3",
+  "sympy>=1.14,<2",
+  "torch>=2.7,<3",
+  "torchvision>=0.22,<1",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+torchvision = { index = "pytorch-cpu" }

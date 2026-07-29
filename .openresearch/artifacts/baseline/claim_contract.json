@@ -1,0 +1,17 @@
+{
+  "artifact_role": "Historical rejected baseline",
+  "source_space_id": "DineshAI/a6fo32UnpU",
+  "source_space_revision": "17e423af3b04b3c0fb493ccfdc26a9724a2be53c",
+  "source_verdict_dataset": "ICML-2026-agent-repro/verdicts@1b782309550dd756df4fd0f3ffe8dca8a32d5269",
+  "selection_contract": "space_id == \"DineshAI/a6fo32UnpU\"",
+  "current_score": "5/12",
+  "claims": [
+    {"claim": 1, "historical_judge_verdict": "toy", "current_reproduction_verdict": "BLOCKED"},
+    {"claim": 2, "historical_judge_verdict": "toy", "current_reproduction_verdict": "BLOCKED"},
+    {"claim": 3, "historical_judge_verdict": "toy", "current_reproduction_verdict": "BLOCKED"},
+    {"claim": 4, "historical_judge_verdict": "toy", "current_reproduction_verdict": "BLOCKED"},
+    {"claim": 5, "historical_judge_verdict": "toy", "current_reproduction_verdict": "BLOCKED"},
+    {"claim": 6, "historical_judge_verdict": "inconclusive", "current_reproduction_verdict": "BLOCKED"}
+  ]
+}
+
