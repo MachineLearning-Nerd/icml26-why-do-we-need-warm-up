@@ -1,0 +1,10 @@
+{
+  "claim1_published_sum_constants": "REJECTED_AS_INTENDED",
+  "claim2_full_rank_data_control": "COUNTEREXAMPLE_REMOVED",
+  "claim3_linear_activation_control": "COUNTEREXAMPLE_REMOVED",
+  "claim4_looser_target_control": "NON_CONTRADICTORY",
+  "claim5_small_epsilon_control": "PASSES_POSITIVE_BOUND",
+  "claim6_fineweb_permutation_control": "PASS",
+  "claim6_imagenet32_permutation_control": "PASS",
+  "claim6_same_batch_proxy_control": "NOISE_TERM_REMOVED"
+}

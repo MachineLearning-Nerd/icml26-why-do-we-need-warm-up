@@ -1,0 +1,58 @@
+{
+  "verdict": "BLOCKED",
+  "verifier": "PASS",
+  "provider_status": "failed_after_complete_payload_due_to_timeout",
+  "experiment_id": "d34b2789-92d7-480d-855c-9e4693f1e302",
+  "run_id": "9f00d661-9f97-4381-8a26-93aaa1baa24f",
+  "git_sha": "01426573fe559c956cf133ca8b06312b1773422e",
+  "seed_base": 20260729,
+  "trajectory_seeds": [100, 101, 102],
+  "expected_cores": 64,
+  "selected_flavor": "cpu-upgrade",
+  "actual_cpu_allocation": 64,
+  "runtime_seconds": 23837.27177,
+  "dataset": {
+    "url": "https://image-net.org/data/downsample/Imagenet32_train.zip",
+    "member": "train_data_batch_1",
+    "crc32_verified": true,
+    "compressed_sha256": "411039b071be4af79e3da8f7532e2ee95ff320170953fe5320d4c0127cba3043",
+    "uncompressed_sha256": "29e341b4194f1c1e1d4a2ee7ba45bbcb153bebc0b78875c94c7ddcba916d3091"
+  },
+  "models": {
+    "ResNet50": {
+      "parameter_count": 25549352,
+      "steps_per_seed": 30,
+      "seeds": 3,
+      "slope": -190900.9081957281,
+      "slope_ci95": [-448990.1568558044, 110871.58415512761],
+      "r_squared": 0.013947365914969478,
+      "permutation_p_value": 0.24750499001996007,
+      "accepted": false
+    },
+    "ViT-Tiny": {
+      "parameter_count": 4666792,
+      "steps_per_seed": 30,
+      "seeds": 3,
+      "slope": 14390.914735507235,
+      "slope_ci95": [-21558.9259615876, 49189.26841190052],
+      "r_squared": 0.006447827637632075,
+      "permutation_p_value": 0.4550898203592814,
+      "accepted": false
+    }
+  },
+  "independent_checker": {
+    "method": "independent float32 norm reduction",
+    "maximum_relative_error": 4.159137236798056e-7,
+    "passed": true
+  },
+  "negative_control": {
+    "method": "500 loss-label permutations per seed and pooled architecture",
+    "passed": true
+  },
+  "deviations": [
+    "Three 30-step early trajectories replace full ImageNet32 training.",
+    "Batch 8 float32 CPU replaces the paper's undisclosed batch and GPU precision.",
+    "Only the first official training member is sampled."
+  ],
+  "reason_blocked": "The named architectures and official data were used, but the material horizon, batch, precision, and data-coverage deviations preclude verification or assumption-satisfying falsification."
+}

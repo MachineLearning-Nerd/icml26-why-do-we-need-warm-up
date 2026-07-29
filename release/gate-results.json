@@ -1,0 +1,15 @@
+{
+  "status": "PENDING_FINAL_VALIDATION",
+  "candidate_source": "fresh copy of judged Space revision 17e423af3b04b3c0fb493ccfdc26a9724a2be53c plus exact text allowlist",
+  "canonical_entrypoint": "CURRENT.md",
+  "old_file_set_subset": null,
+  "historical_page_byte_identical": null,
+  "candidate_json_valid": null,
+  "links_resolve": null,
+  "text_only_allowlist": null,
+  "secret_scan": null,
+  "marimo_check": null,
+  "cumulative_verifier": null,
+  "blind_review_1": "completed_with_missing_vision_artifacts",
+  "blind_review_2": "completed_after_fixes"
+}

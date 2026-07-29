@@ -1,0 +1,11 @@
+{
+  "definition_inclusion_certificate": "PASS",
+  "full_hessian_hvp_checker": "PASS",
+  "claim2_complete_hessian_checker": "PASS",
+  "claim3_autograd_analytic_80digit_checker": "PASS",
+  "claim4_class_and_hitting_time_checker": "PASS",
+  "claim5_pl_and_formula_checker": "PASS",
+  "fineweb_float32_float64_reduction_checker": "PASS",
+  "imagenet32_independent_reduction_checker": "PASS",
+  "historical_regression": "PASS"
+}

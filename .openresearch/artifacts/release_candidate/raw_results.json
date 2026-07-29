@@ -1,0 +1,17 @@
+{
+  "fixed_command": "uv run --frozen python -m warmup_repro.run",
+  "seed": 20260729,
+  "claims": {
+    "1": {"verdict": "VERIFIED", "hvp_full_hessian_relative_error": 8.953426626240092e-11},
+    "2": {"verdict": "FALSIFIED", "loss_gap": 0.0, "hessian_norm_formula": "2*t^2", "balance_residual": 0.0},
+    "3": {"verdict": "FALSIFIED", "hessian_norm": 63.135920, "largest_printed_rhs": 4.088329, "margin": 59.047591},
+    "4": {"verdict": "FALSIFIED", "observed_iterations": 1, "claimed_lower_bound": 1.7462979},
+    "5": {"verdict": "FALSIFIED", "displayed_upper_bound": -13.8629436, "minimum_possible_iterations": 0},
+    "6": {
+      "verdict": "BLOCKED",
+      "fineweb_raw": "evidence/claim6_fineweb.json",
+      "imagenet32_raw": "evidence/claim6_imagenet32.json",
+      "proxy_calibration_raw": "evidence/claim6_proxy_calibration.json"
+    }
+  }
+}

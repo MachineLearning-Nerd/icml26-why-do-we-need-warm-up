@@ -32,13 +32,26 @@ hashed tokens, and float32 CPU are material deviations.
 
 The exact ResNet50/ViT-Tiny route uses official ImageNet32 bytes, three seeds,
 30 measured steps, bootstrap intervals, permutation controls, and independent
-float32/float64 norm reductions.
+norm reductions.
 
-Terminal outcome: **PENDING INTEGRATION**.
+| Model | Parameters | Pooled slope | 95% CI | R² | Permutation p |
+|---|---:|---:|---:|---:|---:|
+| ResNet50 | 25,549,352 | −190,901 | [−448,990, 110,872] | 0.0139 | 0.248 |
+| ViT-Tiny | 4,666,792 | 14,391 | [−21,559, 49,189] | 0.00645 | 0.455 |
+
+Neither architecture passes the predeclared relationship criterion. The
+independent reduction checker agrees within `4.16e-7`, and 500 label
+permutations per seed supply the negative control. The provider marked the run
+failed only after the complete `verifier: PASS` payload had printed, when its
+timeout was reached.
 
 - [Executable vision route](../../warmup_repro/imagenet32.py)
+- [Raw vision JSON](../../evidence/claim6_imagenet32.json)
 - Run SHA: `01426573fe559c956cf133ca8b06312b1773422e`
-- Compute: HF cpu-upgrade, 64 selected/visible CPUs
+- Run ID: `9f00d661-9f97-4381-8a26-93aaa1baa24f`
+- Compute: HF cpu-upgrade, 64 selected/visible CPUs, `23837.27177 s`
+- Deviations: 30 steps per seed, batch eight, float32 CPU, first official
+  training member only
 
 ## Route 3 — complete-Hessian proxy calibration
 

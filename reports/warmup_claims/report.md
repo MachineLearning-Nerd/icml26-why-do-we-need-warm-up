@@ -144,9 +144,17 @@ Four materially different routes were pursued:
 3. a complete-Hessian estimator calibration with same-batch controls;
 4. a literal implementation of the printed two-iterate/two-minibatch estimator.
 
+The vision route completed three 30-step trajectories per model on official
+ImageNet32 bytes. ResNet50's pooled slope was `−190,901` (95% CI
+`[−448,990, 110,872]`, permutation `p=0.248`); ViT-Tiny's was `14,391`
+(`[−21,559, 49,189]`, `p=0.455`). Neither predeclared test passed. The provider
+reported a timeout after the complete verifier payload printed; its scientific
+runtime was `23,837.27 s` on 64 CPUs. This remains non-dispositive because it
+uses only 30 steps per seed, batch eight, float32, and one official training
+member.
+
 The fourth route was blocked before execution by two HF CPU image failures
-(`uv` missing). The vision route's terminal status is recorded in the final
-evidence table. Claim 6 therefore remains honestly `BLOCKED`.
+(`uv` missing). Claim 6 therefore remains honestly `BLOCKED`.
 
 ## Confidence and score forecast
 
@@ -175,6 +183,8 @@ complete ImageNet32 schedules on suitable hardware.
 - Deterministic seed: `20260729`
 - Short exact-theorem cumulative verifier: one local CPU thread
 - FineWeb route: HF `cpu-upgrade`, 64 visible/selected threads, `4530.31 s`
+- ImageNet32 route: HF `cpu-upgrade`, 64 visible/selected threads,
+  `23837.27 s`; complete payload preceded provider timeout
 - Paper source hashes and exact anchors: `.openresearch/artifacts/*/source_audit.md`
 - Machine-readable results: `evidence/`
 

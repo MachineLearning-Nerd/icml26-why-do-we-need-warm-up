@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "title": "Why Do We Need Warm-up? Exact claim audit",
+  "emoji": "🔥",
+  "space_id": "DineshAI/a6fo32UnpU",
+  "paper": "2510.03164",
+  "tags": [
+    "icml2026-repro",
+    "paper-a6fo32UnpU"
+  ],
+  "updated_at": "2026-07-29T20:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Why Do We Need Warm-up? Exact claim audit",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "current",
+        "title": "Current exact claim verification",
+        "file": "pages/current/page.md",
+        "children": [
+          {
+            "slug": "claim-1",
+            "title": "Claim 1 — VERIFIED",
+            "file": "pages/claims/claim-1.md",
+            "children": []
+          },
+          {
+            "slug": "claim-2",
+            "title": "Claim 2 — FALSIFIED",
+            "file": "pages/claims/claim-2.md",
+            "children": []
+          },
+          {
+            "slug": "claim-3",
+            "title": "Claim 3 — FALSIFIED",
+            "file": "pages/claims/claim-3.md",
+            "children": []
+          },
+          {
+            "slug": "claim-4",
+            "title": "Claim 4 — FALSIFIED",
+            "file": "pages/claims/claim-4.md",
+            "children": []
+          },
+          {
+            "slug": "claim-5",
+            "title": "Claim 5 — FALSIFIED",
+            "file": "pages/claims/claim-5.md",
+            "children": []
+          },
+          {
+            "slug": "claim-6",
+            "title": "Claim 6 — BLOCKED",
+            "file": "pages/claims/claim-6.md",
+            "children": []
+          },
+          {
+            "slug": "red-team",
+            "title": "Evaluator-blind review",
+            "file": "pages/red-team/page.md",
+            "children": []
+          }
+        ]
+      },
+      {
+        "slug": "overview",
+        "title": "Historical rejected baseline",
+        "file": "pages/overview/page.md",
+        "children": []
+      }
+    ]
+  },
+  "agent_view_tokens": 736,
+  "revision": "candidate-awaiting-judge"
+}
