@@ -1,0 +1,6 @@
+{
+  "claim": 6,
+  "source_anchor": "Section 3.2, displayed stochastic local-smoothness proxy",
+  "contract": "Calibrate the exact printed consecutive-minibatch quotient against the complete Hessian norm, same-batch and full-batch directional finite differences, and a batch-noise control.",
+  "acceptance": "This route can validate or invalidate the proxy as a curvature estimator; it cannot alone establish the named full-scale empirical relationship."
+}

@@ -56,6 +56,11 @@ def main() -> int:
     os.environ.setdefault("MKL_NUM_THREADS", "1")
 
     config = json.loads((ROOT / "warmup_repro" / "config.json").read_text())
+    if config["stage"] == "proxy_calibration":
+        from warmup_repro.proxy_calibration import run_proxy_calibration
+
+        return run_proxy_calibration(config, started)
+
     if config["stage"] == "proposition33_counterexample":
         from warmup_repro.proposition33_counterexample import run_counterexample
 
