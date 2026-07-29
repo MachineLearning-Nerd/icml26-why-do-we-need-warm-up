@@ -19,6 +19,7 @@ def load(name: str) -> dict[str, object]:
 def save(name: str) -> None:
     plt.tight_layout()
     plt.savefig(OUT / name, dpi=180, bbox_inches="tight")
+    plt.savefig(OUT / name.replace(".png", ".svg"), bbox_inches="tight")
     plt.close()
 
 

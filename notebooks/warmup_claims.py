@@ -13,21 +13,20 @@ def _():
 
 @app.cell
 def _(mo):
-    mo.md(
-        r"""# Why Do We Need Warm-up? An exact claim audit
+    mo.md(r"""
+    # Why Do We Need Warm-up? An exact claim audit
 
-![Campaign verdicts](https://raw.githubusercontent.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/main/reports/warmup_claims/images/headline_verdicts.png)
+    ![Campaign verdicts](https://raw.githubusercontent.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/main/reports/warmup_claims/images/headline_verdicts.svg)
 
-The paper models curvature as
+    The paper models curvature as
 
-\[
-\|\nabla^2 f(w)\| \le H_0 + H_1(f(w)-f^\star).
-\]
+    \[
+    \|\nabla^2 f(w)\| \le H_0 + H_1(f(w)-f^\star).
+    \]
 
-This notebook opens with the already-computed evidence. It does not
-rerun the expensive FineWeb or ImageNet32 routes.
-"""
-    )
+    This notebook opens with the already-computed evidence. It does not
+    rerun the expensive FineWeb or ImageNet32 routes.
+    """)
     return
 
 
@@ -104,46 +103,44 @@ def _(claim_picker, claims, mo):
 
 @app.cell
 def _(mo):
-    mo.md(
-        r"""## Two exact counterexamples
+    mo.md(r"""
+    ## Two exact counterexamples
 
-### Balanced deep linear network
+    ### Balanced deep linear network
 
-With \(X=\operatorname{diag}(1,0)\), \(Y=0\), and
-\(W_1=W_2=\operatorname{diag}(0,t)\), balancedness is exact and the
-loss gap is zero. A complete Hessian has norm \(2t^2\), so no finite
-\(H_0\) can satisfy the proposed bound for every \(t\).
+    With \(X=\operatorname{diag}(1,0)\), \(Y=0\), and
+    \(W_1=W_2=\operatorname{diag}(0,t)\), balancedness is exact and the
+    loss gap is zero. A complete Hessian has norm \(2t^2\), so no finite
+    \(H_0\) can satisfy the proposed bound for every \(t\).
 
-### Class-stable fixed-step lower bound
+    ### Class-stable fixed-step lower bound
 
-Use \(f(w)=w^2\) on \(|w|\le1\) and
-\(f(w)=2e^{|w|-1}-1\) outside. This is \(C^2\), strongly convex, PL,
-and \((H_0,H_1)\)-smooth with \(H_0=2,H_1=1\). An admissible fixed
-step reaches the minimizer in one iteration where Theorem 4.1(3)
-claims at least 1.7463.
-"""
-    )
+    Use \(f(w)=w^2\) on \(|w|\le1\) and
+    \(f(w)=2e^{|w|-1}-1\) outside. This is \(C^2\), strongly convex, PL,
+    and \((H_0,H_1)\)-smooth with \(H_0=2,H_1=1\). An admissible fixed
+    step reaches the minimizer in one iteration where Theorem 4.1(3)
+    claims at least 1.7463.
+    """)
     return
 
 
 @app.cell
 def _(mo):
-    mo.md(
-        """## What remains
+    mo.md("""
+    ## What remains
 
-Claim 6 is not resolved by exact parameter counts alone. A faithful
-test still needs the paper's tokenizer and estimator implementation,
-batch 256, sequence lengths 1024/2048, billion-token LM horizons,
-full ImageNet32 schedules, and the reported FP16 setup.
+    Claim 6 is not resolved by exact parameter counts alone. A faithful
+    test still needs the paper's tokenizer and estimator implementation,
+    batch 256, sequence lengths 1024/2048, billion-token LM horizons,
+    full ImageNet32 schedules, and the reported FP16 setup.
 
-Run locally:
+    Run locally:
 
-```text
-uv run marimo edit notebooks/warmup_claims.py
-uv run marimo run notebooks/warmup_claims.py
-```
-"""
-    )
+    ```text
+    uv run marimo edit notebooks/warmup_claims.py
+    uv run marimo run notebooks/warmup_claims.py
+    ```
+    """)
     return
 
 

@@ -1,6 +1,6 @@
 # Why warm-up? An exact claim audit
 
-![Five exact verdicts and one blocked empirical claim](images/headline_verdicts.png)
+![Five exact verdicts and one blocked empirical claim](images/headline_verdicts.svg)
 
 - Previous live judged score: `5/12`
 - Conservative projected score range after publication: `5–10/12`
@@ -66,7 +66,7 @@ evidence.
 
 ### Claim 2: balancedness does not control an unobserved subspace
 
-![Hessian curvature grows as 2t squared while loss remains zero](images/claim2_unbounded_curvature.png)
+![Hessian curvature grows as 2t squared while loss remains zero](images/claim2_unbounded_curvature.svg)
 
 Take `X=diag(1,0)`, `Y=0`, and `W1=W2=diag(0,t)`. Every tested point has exact
 strong-balance residual zero and loss `f=f*=0`, but a complete `8×8` Hessian has
@@ -79,7 +79,7 @@ full-row-rank data. It does not falsify a rank-restored theorem.
 
 ### Claim 3: the published constant drops an `f*` term
 
-![Complete Hessian norm exceeds the largest printed right-hand side](images/claim3_bound_violation.png)
+![Complete Hessian norm exceeds the largest printed right-hand side](images/claim3_bound_violation.svg)
 
 The one-hidden-unit CE+L2 counterexample uses the globally smooth activation
 `φ(s)=s+(a/ω)sin(ωs)`. Its bounds `C1=C2=1.0001`,
@@ -95,7 +95,7 @@ omitted `Clinear·f*` term repairs this specific defect.
 
 ### Claims 4–5: the displayed iteration bounds cross valid hitting times
 
-![Observed and claimed iteration bounds for Theorems 4.1 and 4.3](images/theorem_iteration_contradictions.png)
+![Observed and claimed iteration bounds for Theorems 4.1 and 4.3](images/theorem_iteration_contradictions.svg)
 
 For Claim 4, the counterexample is the paper's own `C²`,
 strongly-convex/PL construction: quadratic on `|w|≤1` and exponential outside.
@@ -115,7 +115,7 @@ recurrence.
 
 ## Claim 6: full parameter counts are not full reproduction
 
-![Short FineWeb slope estimates and bootstrap intervals](images/claim6_fineweb_slopes.png)
+![Short FineWeb slope estimates and bootstrap intervals](images/claim6_fineweb_slopes.svg)
 
 The FineWeb route instantiated exact parameter counts:
 
