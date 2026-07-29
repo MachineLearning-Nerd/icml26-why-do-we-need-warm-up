@@ -56,6 +56,11 @@ def main() -> int:
     os.environ.setdefault("MKL_NUM_THREADS", "1")
 
     config = json.loads((ROOT / "warmup_repro" / "config.json").read_text())
+    if config["stage"] == "falsification_audit":
+        from warmup_repro.falsification import run_falsification
+
+        return run_falsification(config, started)
+
     record_path = ARTIFACTS / "historical_verdict.json"
     record = json.loads(record_path.read_text())
     errors = validate_historical_record(record)

@@ -1,0 +1,23 @@
+{
+  "route": "assumption-satisfying falsification",
+  "source_revision": "arXiv:2510.03164v2",
+  "contracts": [
+    {
+      "target": "Proposition B.2 stated constants",
+      "quantifier": "for every pair of lower-bounded (H0,H1)-smooth functions",
+      "falsification_condition": "one pair satisfying all assumptions for which the displayed H0 is negative or its bound fails"
+    },
+    {
+      "target": "Theorem 4.3 displayed iteration bound",
+      "quantifier": "for every (H0,H1)-smooth mu-PL function and stated epsilon",
+      "falsification_condition": "assumptions hold but the displayed upper bound is not a nonnegative iteration count"
+    },
+    {
+      "target": "historical finite-ray slope proxy",
+      "quantifier": "claimed equivalence between fitted slope <=1.2 and global (H0,H1)-smoothness",
+      "falsification_condition": "finite fit passes while curvature/(f-f*) is unbounded globally"
+    }
+  ],
+  "seed": 20260729
+}
+
