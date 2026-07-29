@@ -1,0 +1,6 @@
+{
+  "claim": 3,
+  "source": "Proposition 3.3(ii), Equation (31)",
+  "quantifier": "For all W, under the listed activation and positive L2 assumptions, the printed H0 and H1 bound the Hessian norm.",
+  "falsification_contract": "Exhibit one activation, dataset, regularization pair, and W satisfying every assumption for which the complete Hessian norm exceeds the printed RHS for every feasible value of f*."
+}
