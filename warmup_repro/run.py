@@ -81,6 +81,16 @@ def main() -> int:
 
         return run_counterexamples(config, started)
 
+    if config["stage"] == "fineweb_exact_scale":
+        from warmup_repro.fineweb_lm import run_fineweb
+
+        return run_fineweb(config, started)
+
+    if config["stage"] == "literal_proxy_falsification":
+        from warmup_repro.literal_proxy import run_literal_proxy
+
+        return run_literal_proxy(config, started)
+
     if config["stage"] == "certificates_and_scales":
         from warmup_repro.certificates import run_certificates
 

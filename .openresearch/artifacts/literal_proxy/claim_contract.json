@@ -1,0 +1,9 @@
+{
+  "claim": 6,
+  "verdict_options": ["VERIFIED", "FALSIFIED", "BLOCKED"],
+  "exact_statement": "For much of early training of 70M, 160M, and 410M PlainLM models on FineWeb, the displayed stochastic local-smoothness proxy is well approximated by a line in stochastic training loss.",
+  "displayed_proxy": "||grad f_{S_k}(w_{k+1}) - grad f_{S_{k-1}}(w_k)|| / ||w_{k+1}-w_k||",
+  "verification_rule": "All named model scales and the paper-scale early-training window must pass a predeclared positive-slope, confidence-interval, and permutation check.",
+  "falsification_rule": "A negative result counts only when model, data, optimizer, initialization, batch, sequence, tokenizer, precision, and early-training horizon match the paper.",
+  "route_verdict": "BLOCKED"
+}
