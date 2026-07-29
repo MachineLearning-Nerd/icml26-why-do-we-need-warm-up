@@ -1,0 +1,5 @@
+{
+  "claim": 4,
+  "source": "Theorem 4.1(3), Appendix J Equations (63) and (65)",
+  "contract": "Use a C2, (H0,H1)-smooth, mu-PL member of the paper's own construction and a fixed step no larger than its stability cap. Falsify only if the observed first hit is below the displayed lower bound."
+}
