@@ -174,6 +174,7 @@ def symbolic_proof_audit() -> dict[str, object]:
     published_h0 = lambda1 + lambda2 + b_res * (fstar + 1)
     published_rhs = published_h0 + h1 * gap
     missing_term = sp.simplify(derived_rhs - published_rhs)
+    missing_term_detected = sp.simplify(missing_term - c_linear * fstar) == 0
     return {
         "universal_domain": (
             "A1,A2,A12,Bmix,Bres,u,v,loss,gap,fstar are nonnegative; "
@@ -190,7 +191,7 @@ def symbolic_proof_audit() -> dict[str, object]:
             "missing_term": "C_linear*fstar",
             "published_derivation_certificate": (
                 "REJECTED_AS_INTENDED"
-                if missing_term == c_linear * fstar
+                if missing_term_detected
                 else "UNEXPECTED_PASS"
             ),
             "corrected_h0": str(corrected_h0),
