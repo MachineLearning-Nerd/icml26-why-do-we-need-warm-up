@@ -1,0 +1,11 @@
+{
+  "claim": 6,
+  "paper_models": ["70M", "160M", "410M"],
+  "dataset": "HuggingFaceFW/fineweb sample-10BT",
+  "optimizer": "SGD",
+  "learning_rate": 0.0001,
+  "gradient_clip": 1.0,
+  "proxy": "||grad_Sk(w_k+1)-grad_Sk-1(w_k)|| / ||w_k+1-w_k||",
+  "predeclared_steps": 12,
+  "acceptance": "positive slope with 95% bootstrap lower bound > 0 and permutation p <= 0.05 for every architecture"
+}
