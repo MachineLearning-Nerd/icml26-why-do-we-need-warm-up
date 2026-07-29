@@ -1,0 +1,19 @@
+{
+  "route": "exact certificates plus dimension sweeps",
+  "source_revision": "arXiv:2510.03164v2",
+  "seed": 20260729,
+  "acceptance": {
+    "claims_1_5": [
+      "symbolic recurrence or structural certificate passes",
+      "named assumptions are numerically audited",
+      "direct Hessian-vector products reach at least 100000 parameters",
+      "HVP estimator agrees with an independently materialized full Hessian",
+      "historical evidence regression passes",
+      "negative controls are rejected for the intended reason"
+    ],
+    "claim_6": "remains BLOCKED until the named full-scale empirical architectures and datasets run"
+  },
+  "predeclared_horizon": 200000,
+  "predeclared_targets": [0.01, 0.0001, 0.000001]
+}
+

@@ -56,6 +56,11 @@ def main() -> int:
     os.environ.setdefault("MKL_NUM_THREADS", "1")
 
     config = json.loads((ROOT / "warmup_repro" / "config.json").read_text())
+    if config["stage"] == "certificates_and_scales":
+        from warmup_repro.certificates import run_certificates
+
+        return run_certificates(config, started)
+
     record_path = ARTIFACTS / "historical_verdict.json"
     record = json.loads(record_path.read_text())
     errors = validate_historical_record(record)
