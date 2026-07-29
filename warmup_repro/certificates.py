@@ -376,6 +376,13 @@ def symbolic_certificates() -> dict[str, object]:
     h0, z, theta = sp.symbols("h0 z theta", positive=True)
     large_numerator = sp.factor(40 * z - (10 * h0 + 20 * z))
     small_numerator = sp.factor(20 * h0 - (10 * h0 + 20 * z))
+    regime_slack = sp.symbols("regime_slack", nonnegative=True)
+    large_regime_certificate = sp.simplify(
+        large_numerator.subs(z, h0 / 2 + regime_slack)
+    )
+    small_regime_certificate = sp.simplify(
+        small_numerator.subs(z, h0 / 2 - regime_slack)
+    )
     descent_slack = sp.factor(
         sp.Rational(1, 2)
         - sp.Rational(9, 8) * (h0 + 3 * z) / (10 * h0 + 20 * z)
@@ -425,12 +432,14 @@ def symbolic_certificates() -> dict[str, object]:
         "claim4_large_regime": {
             "required_assumption": "z=H1*gap >= H0/2",
             "nonnegative_numerator": str(large_numerator),
-            "certificate": large_numerator == 10 * (-h0 + 2 * z),
+            "assumption_substitution": str(large_regime_certificate),
+            "certificate": large_regime_certificate == 20 * regime_slack,
         },
         "claim4_small_regime": {
             "required_assumption": "z=H1*gap <= H0/2",
             "nonnegative_numerator": str(small_numerator),
-            "certificate": small_numerator == 10 * (h0 - 2 * z),
+            "assumption_substitution": str(small_regime_certificate),
+            "certificate": small_regime_certificate == 20 * regime_slack,
         },
         "claim4_distance_descent": {
             "slack_factorization": str(descent_slack),
@@ -672,23 +681,23 @@ def run_certificates(config: dict[str, object], started: float) -> int:
             },
             {
                 "claim": 2,
-                "verdict": "VERIFIED",
-                "basis": "Homogeneity certificate plus balanced direct HVP sweeps through 131,072 parameters and independent full-Hessian calibration.",
+                "verdict": "BLOCKED",
+                "basis": "Balanced HVP sweeps reach 131,072 parameters, but the homogeneity check is not a complete independent reconstruction of Proposition 3.2/D.1.",
             },
             {
                 "claim": 3,
-                "verdict": "VERIFIED",
-                "basis": "L2 coercivity certificate plus CE, MSE, and formal single-attention architecture sweeps through 131,584 parameters.",
+                "verdict": "BLOCKED",
+                "basis": "CE, MSE, and formal attention sweeps reach 131,584 parameters, but L2 coercivity alone is not a complete proof certificate for Propositions 3.3/E.2.",
             },
             {
                 "claim": 4,
-                "verdict": "VERIFIED",
-                "basis": "Exact two-regime recurrence and C2 lower-bound witness certificates plus dense nonseparable Aiming objective.",
+                "verdict": "BLOCKED",
+                "basis": "Regime inequalities, a C2 witness, and nonseparable Aiming convergence pass; the minimax lower-bound proof is not reconstructed in full.",
             },
             {
                 "claim": 5,
-                "verdict": "VERIFIED",
-                "basis": "Exact PL recurrence and dense 64D strongly-convex nonseparable convergence with first-hit targets.",
+                "verdict": "BLOCKED",
+                "basis": "A dense 64D PL instance and recurrence fragments pass, but the complete quantified proof and omitted epsilon domain remain unresolved.",
             },
             {
                 "claim": 6,

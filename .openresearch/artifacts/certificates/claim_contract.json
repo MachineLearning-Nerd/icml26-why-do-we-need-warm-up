@@ -3,7 +3,7 @@
   "source_revision": "arXiv:2510.03164v2",
   "seed": 20260729,
   "acceptance": {
-    "claims_1_5": [
+    "route_evidence": [
       "symbolic recurrence or structural certificate passes",
       "named assumptions are numerically audited",
       "direct Hessian-vector products reach at least 100000 parameters",
@@ -11,9 +11,9 @@
       "historical evidence regression passes",
       "negative controls are rejected for the intended reason"
     ],
+    "universal_claims": "BLOCKED unless the complete quantified proof is independently reconstructed",
     "claim_6": "remains BLOCKED until the named full-scale empirical architectures and datasets run"
   },
   "predeclared_horizon": 200000,
   "predeclared_targets": [0.01, 0.0001, 0.000001]
 }
-
