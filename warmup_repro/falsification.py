@@ -47,11 +47,11 @@ def corrected_sum_constant(
 
 
 def slope_proxy_counterexample() -> dict[str, float | bool]:
-    points = np.linspace(1.0, 2.0, 30)
+    points = np.linspace(2.0, 3.0, 30)
     values = np.exp(points * points) - 1.0
     curvatures = (4.0 * points * points + 2.0) * np.exp(points * points)
     slope = float(np.polyfit(np.log(values), np.log(curvatures), 1)[0])
-    ratio_at_2 = float(curvatures[-1] / values[-1])
+    ratio_at_3 = float(curvatures[-1] / values[-1])
     w_far = 10.0
     ratio_at_10 = float(
         ((4.0 * w_far * w_far + 2.0) * math.exp(w_far * w_far))
@@ -60,7 +60,7 @@ def slope_proxy_counterexample() -> dict[str, float | bool]:
     return {
         "finite_ray_loglog_slope": slope,
         "historical_threshold_accepts": slope <= 1.2,
-        "curvature_to_gap_ratio_w2": ratio_at_2,
+        "curvature_to_gap_ratio_w3": ratio_at_3,
         "curvature_to_gap_ratio_w10": ratio_at_10,
         "global_affine_bound_exists": False,
     }
