@@ -56,6 +56,11 @@ def main() -> int:
     os.environ.setdefault("MKL_NUM_THREADS", "1")
 
     config = json.loads((ROOT / "warmup_repro" / "config.json").read_text())
+    if config["stage"] == "proof_certificates":
+        from warmup_repro.proof_certificates import run_proof_certificates
+
+        return run_proof_certificates(config, started)
+
     if config["stage"] == "exact_counterexamples":
         from warmup_repro.counterexamples_exact import run_counterexamples
 

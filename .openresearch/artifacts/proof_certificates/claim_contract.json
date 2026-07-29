@@ -1,0 +1,14 @@
+{
+  "claim": 3,
+  "source_scope": [
+    "Proposition 3.3 and Equations (28)-(31)",
+    "Proposition 3.4 informal, formalized as Proposition E.2 and Equations (36)-(38)"
+  ],
+  "contract": "Check the universal inequality chain without fitting constants, independently reconstruct complete Hessians, reject corrupted bounds, and distinguish printed constants from corrected existence statements.",
+  "acceptance": {
+    "VERIFIED": "Every printed implication and constant has a valid machine-checkable derivation.",
+    "FALSIFIED": "An assumption-satisfying counterexample contradicts a printed quantified conclusion.",
+    "BLOCKED": "A proof gap is located but neither repaired equivalence nor an exact counterexample resolves the printed claim."
+  },
+  "seed": 20260729
+}

@@ -1,5 +1,5 @@
 {
-  "stage": "exact_counterexamples",
+  "stage": "proof_certificates",
   "expected_cores": 1,
   "seed": 20260729
 }
