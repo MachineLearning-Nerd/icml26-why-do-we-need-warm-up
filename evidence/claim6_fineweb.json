@@ -1,0 +1,32 @@
+{
+  "claim": 6,
+  "verdict": "BLOCKED",
+  "source_anchor": "Section 3.2, Figure 1, Appendix K.1 and Figure K.2",
+  "run_id": "01955761-b2c2-4462-8fd8-57e6309c1de8",
+  "git_sha": "72831108f97570f966d2f9e243154456bf8dc116",
+  "runtime_seconds": 4530.30788,
+  "expected_cores": 64,
+  "actual_cpu_allocation": 64,
+  "dataset": {
+    "name": "HuggingFaceFW/fineweb sample-10BT",
+    "response_sha256": "dd8e3594cfc2af77a1dac37950b025668fc7052affb16209d1a42ba284392cf4",
+    "row_count": 100
+  },
+  "models": [
+    {"model": "70M", "parameters": 71941888, "slope": -8248.468894857757, "slope_ci95": [-37177.57101224167, 21008.303611269803], "r_squared": 0.03681209156734333, "permutation_p": 0.530938123752495},
+    {"model": "160M", "parameters": 162186240, "slope": -13310.622586287926, "slope_ci95": [-33824.82475371179, 3619.240222142183], "r_squared": 0.16382961880059232, "permutation_p": 0.18962075848303392},
+    {"model": "410M", "parameters": 411309056, "slope": -2310.316956858988, "slope_ci95": [-67275.39073604142, 26305.546633520484], "r_squared": 0.000744296828069424, "permutation_p": 0.9221556886227545}
+  ],
+  "independent_checker": {
+    "maximum_float32_float64_norm_relative_error": 1.854691268629211e-7
+  },
+  "negative_control": "500 loss-label permutations per architecture",
+  "deviations": [
+    "12 steps replace the paper-scale early-training horizon.",
+    "Micro-batch 1 and sequence length 16 replace batch 256 and lengths 1024/2048.",
+    "Hashed word pieces replace the unavailable tokenizer.",
+    "Float32 CPU replaces mixed-precision FP16 GPU training.",
+    "The route uses a one-backward approximation; the printed estimator requires extra reevaluation."
+  ],
+  "basis": "No model passes the predeclared positive-slope test, but the material protocol deviations prevent valid falsification."
+}

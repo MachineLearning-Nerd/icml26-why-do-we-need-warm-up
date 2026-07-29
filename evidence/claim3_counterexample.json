@@ -1,0 +1,39 @@
+{
+  "claim": 3,
+  "verdict": "FALSIFIED",
+  "source_anchor": "Proposition 3.3(ii), Equation (31)",
+  "model": "one-input, one-hidden-unit, one-sample CE+L2 network",
+  "activation": "phi(s)=s+(a/omega)sin(omega*s)",
+  "activation_parameters": {
+    "a": 0.0001,
+    "omega": 4238903.076676133,
+    "phase_index": 1000000
+  },
+  "assumption_audit": {
+    "C1": 1.0001,
+    "C2": 1.0001,
+    "C3": 423.89030766761334,
+    "lambda1": 0.1,
+    "lambda2": 0.1,
+    "positive_regularization": true
+  },
+  "result": {
+    "loss": 0.3250829739187598,
+    "fstar_lower_bound": 0.32506100278721883,
+    "paper_rhs_upper_bound_over_all_valid_fstar": 4.088329645538989,
+    "complete_hessian_norm": 63.13592027816656,
+    "contradiction_margin": 59.04759063262757
+  },
+  "independent_checker": {
+    "analytic_hessian_norm": 63.13592027816658,
+    "high_precision_80_digit_hessian_norm": 63.13592027816657,
+    "autograd_analytic_error": 2.1316282072803006e-14,
+    "autograd_high_precision_error": 1.4210854715202004e-14
+  },
+  "negative_control": {
+    "change": "Set a=0, making phi(s)=s and C3=0.",
+    "contradiction_margin": -3.5524002005591875,
+    "outcome": "REJECTED_AS_INTENDED"
+  },
+  "scope": "The printed Equation (31) constants are false. A corrected H0 containing the omitted Clinear*fstar term is not contradicted."
+}

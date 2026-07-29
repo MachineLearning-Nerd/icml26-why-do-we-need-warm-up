@@ -1,0 +1,37 @@
+{
+  "claim": 4,
+  "verdict": "FALSIFIED",
+  "source_anchor": "Theorem 4.1(3), Appendix J, Equations (63) and (65)",
+  "objective": {
+    "inside": "f(w)=w^2 for |w|<=1",
+    "outside": "f(w)=2*exp(|w|-1)-1 for |w|>1",
+    "fstar": 0
+  },
+  "assumption_audit": {
+    "C2_boundary_residuals_orders_0_1_2": [0, 0, 0],
+    "convex": true,
+    "strongly_convex_mu": 2,
+    "PL_mu": 2,
+    "H0": 2,
+    "H1": 1
+  },
+  "result": {
+    "initial_point": 1.0487901641694322,
+    "initial_loss": 1.1000000000000005,
+    "constant_step": 0.49942388769972956,
+    "equation63_stability_cap": 1.9914730541896817,
+    "point_after_one_step": -2.220446049250313e-16,
+    "epsilon": 0.000001,
+    "observed_first_hit": 1,
+    "paper_iteration_lower_bound": 1.7462978859421259,
+    "contradiction_margin_iterations": 0.7462978859421259
+  },
+  "proof_error": "-log(1-z)>=z makes the exact necessary lower bound no larger than log(ratio)/(2z), but Appendix J promotes that upper replacement to a lower bound.",
+  "negative_control": {
+    "epsilon": 0.1,
+    "observed_first_hit": 1,
+    "paper_iteration_lower_bound": 0.3010203009969999,
+    "outcome": "NONCONTRADICTORY_TARGET_PASSES_AS_INTENDED"
+  },
+  "scope": "Part (3) of Theorem 4.1 is contradicted under its stated stability cap. The adaptive upper bound in Theorem 4.2 is not contradicted."
+}

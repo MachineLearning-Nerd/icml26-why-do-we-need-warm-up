@@ -1,0 +1,26 @@
+{
+  "claim": 1,
+  "verdict": "VERIFIED",
+  "source_anchor": "Definition 3.1 and Proposition B.1",
+  "contract": "For every w, ||Hessian f(w)|| <= H0 + H1*(f(w)-fstar). Ordinary L-smoothness is the H1=0 special case.",
+  "proof_certificate": {
+    "ordinary_smooth_inclusion": "Set H0=L and H1=0.",
+    "L0_L1_inclusion_extremal_nu": 0.5671432904097838,
+    "nu_equation_residual": 0.0
+  },
+  "independent_checker": {
+    "dimension": 48,
+    "exact_spectral_radius": 19.94614995750155,
+    "hvp_estimate": 19.946149955715686,
+    "relative_error": 8.953426626240092e-11,
+    "pass": true
+  },
+  "negative_control": {
+    "target": "Proposition B.2 printed sum constants",
+    "paper_H0": -100,
+    "paper_rhs": -100,
+    "observed_hessian_norm": 0,
+    "outcome": "REJECTED_AS_INTENDED"
+  },
+  "limitations": "The verified result is the exact definition and inclusion statement. Proposition B.2's printed constants are false; closure survives with a corrected shift-invariant H0."
+}

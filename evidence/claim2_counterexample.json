@@ -1,0 +1,32 @@
+{
+  "claim": 2,
+  "verdict": "FALSIFIED",
+  "source_anchor": "Proposition 3.2(ii), all W under strong balancedness",
+  "contract": "For the stated deep-linear MSE setup, strong balancedness is sufficient for finite global H0,H1 constants.",
+  "counterexample": {
+    "X": [[1, 0], [0, 0]],
+    "Y": [[0, 0], [0, 0]],
+    "input_rank": 1,
+    "lambda_min_XXT": 0.0,
+    "weights": "W1=W2=diag(0,t)",
+    "fstar": 0,
+    "rows": [
+      {"t": 1, "loss": 0, "balance_residual": 0, "hessian_norm": 2},
+      {"t": 2, "loss": 0, "balance_residual": 0, "hessian_norm": 8},
+      {"t": 4, "loss": 0, "balance_residual": 0, "hessian_norm": 32},
+      {"t": 8, "loss": 0, "balance_residual": 0, "hessian_norm": 128},
+      {"t": 16, "loss": 0, "balance_residual": 0, "hessian_norm": 512}
+    ],
+    "symbolic_second_derivative": "2*t**2",
+    "contradiction": "The loss gap is zero for every t while curvature 2*t^2 is unbounded, so no finite H0 can satisfy Definition 3.1."
+  },
+  "independent_checker": "Complete 8x8 autograd Hessian agrees exactly with symbolic 2*t^2 on the tested ray.",
+  "negative_control": {
+    "X": [[1, 0], [0, 1]],
+    "input_rank": 2,
+    "lambda_min_XXT": 1,
+    "loss_at_t4": 256,
+    "outcome": "COUNTEREXAMPLE_MECHANISM_REMOVED_AS_INTENDED"
+  },
+  "scope": "This falsifies the proposition as printed because it omits a full-row-rank assumption on X. It does not falsify a rank-restored statement."
+}

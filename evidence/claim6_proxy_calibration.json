@@ -1,0 +1,14 @@
+{
+  "claim": 6,
+  "verdict": "BLOCKED",
+  "route": "Estimator calibration on a complete 35-parameter Hessian problem",
+  "exact_hessian_loss_correlation": 0.9949,
+  "printed_changing_minibatch_proxy_loss_correlation": 0.1947,
+  "exact_hessian_norm": 0.6033,
+  "printed_proxy_range": [2832, 28490],
+  "median_batch_noise_to_curvature_change": 18283.97,
+  "independent_checker": "Full-batch finite differences match exact Hessian directional actions.",
+  "negative_control": "Using the same minibatch removes the batch-switch term and returns a proxy on the Hessian scale.",
+  "primary_reference_audit": "arXiv:1905.11881 Appendix H.3 Equation (17) evaluates gradients on the same full or 10%-dataset along an interpolation path, not on changing minibatches.",
+  "limitation": "This calibration diagnoses the estimator but is not a named-model reproduction and cannot verify or falsify Section 3.2."
+}

@@ -1,0 +1,29 @@
+{
+  "claim": 5,
+  "verdict": "FALSIFIED",
+  "source_anchor": "Theorem 4.3 displayed iteration bound",
+  "objective": "f(w)=w^2/2",
+  "assumption_audit": {
+    "H0": 1,
+    "H1": 1,
+    "mu": 1,
+    "H_smooth_certificate": "1 <= 1 + f(w)",
+    "PL_certificate": "|grad f|^2 = 2*f"
+  },
+  "counterexample": {
+    "initial_w": 0,
+    "initial_gap": 0,
+    "epsilon": 1,
+    "minimum_valid_iteration_count": 0,
+    "paper_iteration_bound": -13.862943611198906,
+    "contradiction": "The displayed theorem promises a hitting time after at most a negative number of iterations."
+  },
+  "negative_control": {
+    "initial_gap": 1,
+    "epsilon": 0.000001,
+    "observed_first_hit": 77,
+    "paper_iteration_bound": 302.4472675480866,
+    "outcome": "SMALL_EPSILON_DOMAIN_PASSES_AS_INTENDED"
+  },
+  "scope": "This falsifies the displayed formula without an epsilon-domain guard; the corrected small-epsilon PL recurrence is not contradicted."
+}

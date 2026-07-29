@@ -1,0 +1,12 @@
+{
+  "claims": [
+    {"claim": 1, "contract": "Exact Definition 3.1 and Proposition B.1 inclusion", "verdict": "VERIFIED"},
+    {"claim": 2, "contract": "Proposition 3.2(ii) for every strongly balanced W under stated assumptions", "verdict": "FALSIFIED"},
+    {"claim": 3, "contract": "Proposition 3.3(ii) with the printed Equation (31) constants", "verdict": "FALSIFIED"},
+    {"claim": 4, "contract": "Theorem 4.1(3) lower bound under its Equation (63) cap", "verdict": "FALSIFIED"},
+    {"claim": 5, "contract": "Theorem 4.3 displayed after-at-most iteration expression", "verdict": "FALSIFIED"},
+    {"claim": 6, "contract": "Section 3.2 approximate linear relation for all five named models over paper-scale early training", "verdict": "BLOCKED"}
+  ],
+  "fixed_command": "uv run --frozen python -m warmup_repro.run",
+  "seed": 20260729
+}
