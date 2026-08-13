@@ -190,11 +190,11 @@ complete ImageNet32 schedules on suitable hardware.
 
 Important experiment lineage:
 
-- [Exact theorem counterexamples](https://github.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/tree/orx/exact-theorem-counterexamples)
-- [Exact Proposition 3.3 counterexample](https://github.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/tree/orx/exact-proposition-3-3-counterexample)
-- [Class-stable Theorem 4.1 counterexample](https://github.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/tree/orx/class-stable-theorem-4-1-counterexample)
-- [Exact-scale FineWeb route](https://github.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/tree/orx/exact-scale-fineweb-lm-curvature)
-- [Exact ImageNet32 route](https://github.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/tree/orx/exact-imagenet32-vision-curvature)
+- [Exact theorem counterexamples](https://github.com/MachineLearning-Nerd/icml26-why-do-we-need-warm-up/tree/audit/c2-c5-exact-counterexamples)
+- [Exact Proposition 3.3 counterexample](https://github.com/MachineLearning-Nerd/icml26-why-do-we-need-warm-up/tree/audit/c3-proposition33-counterexample)
+- [Class-stable Theorem 4.1 counterexample](https://github.com/MachineLearning-Nerd/icml26-why-do-we-need-warm-up/tree/audit/c4-class-stable-counterexample)
+- [Exact-scale FineWeb route](https://github.com/MachineLearning-Nerd/icml26-why-do-we-need-warm-up/tree/audit/c6-fineweb-lm-curvature)
+- [Exact ImageNet32 route](https://github.com/MachineLearning-Nerd/icml26-why-do-we-need-warm-up/tree/audit/c6-imagenet32-curvature)
 
 No toy result is described as full-scale, and `BLOCKED` is not converted into a
 pass.

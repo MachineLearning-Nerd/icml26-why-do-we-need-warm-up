@@ -16,7 +16,7 @@ def _(mo):
     mo.md(r"""
     # Why Do We Need Warm-up? An exact claim audit
 
-    ![Campaign verdicts](https://raw.githubusercontent.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/main/reports/warmup_claims/images/headline_verdicts.svg)
+    ![Campaign verdicts](https://raw.githubusercontent.com/MachineLearning-Nerd/icml26-why-do-we-need-warm-up/main/reports/warmup_claims/images/headline_verdicts.svg)
 
     The paper models curvature as
 
