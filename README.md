@@ -1,58 +1,126 @@
-# Why Do We Need Warm-up? Exact claim reproduction
+# Why Do We Need Warm-up? A Theoretical Perspective
 
-[![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/blob/main/notebooks/warmup_claims.py)
+Independent, claim-by-claim reproduction audit for ICML 2026 paper
+[“Why Do We Need Warm-up? A Theoretical Perspective”](https://arxiv.org/abs/2510.03164).
 
-This project audits arXiv 2510.03164 claim by claim. The previous live judge
-awarded `5/12` for toy evidence. The new candidate replaces Claims 1–5 with an
-exact definition certificate or assumption-satisfying counterexamples; Claim 6
-remains `BLOCKED` because exact parameter counts do not compensate for
-shortened CPU horizons and material batch, sequence, tokenizer, and precision
-substitutions.
+This repository is an independent audit of the paper’s definitions, quantified
+theorems, counterexamples, and named-model experiments. It is not an official
+author implementation or an endorsement of every printed formula.
 
-Headline result: Claim 2 has loss gap zero but Hessian norm `2t²→∞`; Claim 3
-has complete Hessian `63.1359` versus a maximum printed bound `4.0883`; Claim 4
-reaches the minimizer in one iteration versus a claimed lower bound `1.7463`;
-Claim 5's displayed bound becomes `−13.8629` iterations. These are scoped
-falsifications of the printed statements, not claims that the repaired ideas
-are false.
+## Current assessment
 
-- [Illustrated claim-by-claim report](reports/warmup_claims/report.md)
-- [Tutorial-style marimo notebook](notebooks/warmup_claims.py)
-- [Machine-readable evidence](evidence/)
+The six audited claim groups are assessed as one `VERIFIED`, four `FALSIFIED`,
+and one `BLOCKED`. The previous live judge score was `5/12`; the `5–10/12`
+range is a forecast, not a new judge result.
 
-The paper numbers and observed numbers, assumption audits, controls,
-independent checkers, compute, and limitations are inline in the report.
-Conservative projected score: `5–10/12`; best-supported possible score:
-`10/12`, a forecast only. The live score remains `5/12` until the evaluator
-judges the published revision.
+| Claim | Paper statement tested | How this audit produces the result | Evidence and verdict |
+| --- | --- | --- | --- |
+| 1 | Definition 3.1 defines `(H0,H1)`-smoothness, and Proposition B.1 includes ordinary `L`-smoothness as `H1=0`. | Reconstruct the inclusion symbolically, solve the `(L0,L1)` extremal constant, and compare a complete 48-dimensional Hessian with an independent HVP power estimate. A separate control checks the printed Proposition B.2 sum constants. | Exact definition/inclusion certificate and HVP relative error `8.95e-11`. The separate B.2 constants are rejected because they can make `H0<0`. **VERIFIED for the stated definition/inclusion.** |
+| 2 | Proposition 3.2(ii) claims the deep-linear MSE objective is `(H0,H1)`-smooth for all strongly balanced weights under its stated data assumptions. | Set `X=diag(1,0)`, `Y=0`, and `W1=W2=diag(0,t)`. Audit strong balancedness, loss gap, and the complete Hessian on `t=1,2,4,8,16`; replace `X` with the identity as a negative control. | Loss gap and balance residual stay zero while the exact Hessian norm is `2t²`, hence unbounded. **FALSIFIED as printed; a rank-restored statement is not tested false.** |
+| 3 | Proposition 3.3(ii), Equation (31), gives explicit `(H0,H1)` constants for the two-layer cross-entropy plus L2 result under global activation bounds. | Use a one-input, one-hidden-unit, one-sample activation `phi(s)=s+(a/omega)sin(omega*s)` with a full assumption audit; compare autograd, an analytic eigensystem, and an 80-digit Hessian calculation. Set `a=0` as the negative control. | Complete Hessian norm `63.1359` exceeds the maximum valid printed RHS `4.0883`; the independent methods agree within `2.14e-14`. **FALSIFIED for the printed constants; the corrected omitted `Clinear*f*` term is not falsified.** |
+| 4 | Theorem 4.1(3) and Appendix J claim a fixed-step iteration lower bound under the Equation (63) stability cap. | Use the paper’s class-stable piecewise quadratic/exponential objective, certify `C2`, strong convexity, PL, and `(H0,H1)` assumptions, then measure the first hit under an admissible fixed step. Audit the logarithm inequality and a looser-epsilon control. | The method reaches the minimizer in one step while the claimed lower bound is `1.7463`; the adaptive Theorem 4.2 upper bound is not contradicted. **FALSIFIED for Theorem 4.1(3) as printed.** |
+| 5 | Theorem 4.3 presents an “after at most” PL iteration expression without an epsilon-domain guard. | Use `f(w)=w²/2` with `H0=H1=mu=1`, start at the minimizer, and set `epsilon=1`; verify all smoothness/PL assumptions. Use a positive initial gap and small epsilon as the control. | The displayed bound is `-13.8629` iterations although the minimum valid count is zero. The small-epsilon control passes. **FALSIFIED for the displayed formula without a guard.** |
+| 6 | Section 3.2 claims the consecutive-stochastic-gradient local-smoothness proxy is approximately linear in loss early in training for 70M/160M/410M PlainLM and ResNet50/ViT-Tiny on ImageNet32. | Run separate FineWeb, ImageNet32, complete-Hessian proxy-calibration, and literal-estimator routes with exact parameter counts, independent norm reductions, permutation controls, and same-batch controls. Compare every route with the paper’s batch, sequence, precision, tokenizer, estimator, and horizon requirements. | No positive-slope test passes, but the LM and vision trajectories are materially downscaled; the literal route also has two pre-science `uv` environment failures. **BLOCKED, not falsified.** |
 
-## Experiment log
+The canonical claim pages, source audits, raw JSON, checkers, controls, and
+limitations are linked from [`CURRENT.md`](CURRENT.md) and
+[`pages/current/page.md`](pages/current/page.md).
 
-Every formal node uses the exact command
-`uv run --frozen python -m warmup_repro.run`.
+## What the paper is doing
 
-| Branch / experiment | Purpose or change | Exact run command | Assessment / outcome | Compute |
-|---|---|---|---|---|
-| `main` | Public README, report, notebook, and evidence | Not run as an experiment (publication surface) | Presentation-only baseline branch | — |
-| [`orx/judged-5-of-12-historical-baseline`](https://github.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/tree/orx/judged-5-of-12-historical-baseline) | Freeze the exact judged Space and score | `uv run --frozen python -m warmup_repro.run` | Historical regression PASS; all six new verdicts conservatively BLOCKED | HF cpu-upgrade, 1 thread / 64 visible CPUs, 21 s |
-| [`orx/exact-theorem-counterexamples`](https://github.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/tree/orx/exact-theorem-counterexamples) | Exact Proposition 3.2 and Theorem 4.3 audits | `uv run --frozen python -m warmup_repro.run` | Claims 2 and 5 FALSIFIED; verifier PASS | Local CPU, 1 thread, 15.45 s |
-| [`orx/exact-proposition-3-3-counterexample`](https://github.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/tree/orx/exact-proposition-3-3-counterexample) | Three-way Hessian check for Eq. (31) | `uv run --frozen python -m warmup_repro.run` | Claim 3 FALSIFIED; verifier PASS | Local CPU, 1 thread, 13.63 s |
-| [`orx/class-stable-theorem-4-1-counterexample`](https://github.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/tree/orx/class-stable-theorem-4-1-counterexample) | Counterexample respecting the theorem's class-stability prose | `uv run --frozen python -m warmup_repro.run` | Claim 4 FALSIFIED; cumulative verifier PASS | Local CPU, 1 thread, 13.99 s |
-| [`orx/exact-scale-fineweb-lm-curvature`](https://github.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/tree/orx/exact-scale-fineweb-lm-curvature) | 70M/160M/410M PlainLM trajectories on FineWeb | `uv run --frozen python -m warmup_repro.run` | No positive-slope test passes; Claim 6 BLOCKED because protocol is downscaled | HF cpu-upgrade, 64 threads, 4530.31 s |
-| [`orx/exact-imagenet32-vision-curvature`](https://github.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/tree/orx/exact-imagenet32-vision-curvature) | ResNet50/ViT-Tiny, official ImageNet32, three seeds | `uv run --frozen python -m warmup_repro.run` | Neither relationship test passes; Claim 6 BLOCKED because 30-step batch-8 float32 trajectories are materially downscaled | HF cpu-upgrade, 64 threads, 23837.27 s |
-| [`orx/literal-section-3-2-proxy-falsification-route`](https://github.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/tree/orx/literal-section-3-2-proxy-falsification-route) | Literal printed estimator and same-batch controls | `uv run --frozen python -m warmup_repro.run` | BLOCKED before science: two default HF images lacked `uv` | HF cpu-upgrade, two 10 s environment failures |
-| [`orx/cumulative-claim-release-candidate`](https://github.com/MachineLearning-Nerd/icml26-repro-a6fo32UnpU-why-do-we-need-warm-up-a-theoretical-perspective/tree/orx/cumulative-claim-release-candidate) | Integrate evidence and rerun accepted Claims 1–5 | `uv run --frozen python -m warmup_repro.run` | Pending final cumulative run | Local CPU, 1 thread |
-
-## Notebook
-
-The notebook embeds the small final results and links its headline image from
-GitHub, so expensive experiments are not required to read it in Molab.
+The paper studies why learning-rate warm-up—starting with a small step size and
+increasing it early in training—can help neural-network optimization. Its core
+assumption generalizes smoothness to a curvature bound
 
 ```text
-uv run marimo edit notebooks/warmup_claims.py
-uv run marimo run notebooks/warmup_claims.py
+||Hessian f(w)|| <= H0 + H1 * (f(w) - f*)
 ```
 
-## Upstream workspace note
+The paper argues that curvature decreases as the loss approaches its optimum,
+derives an adaptive schedule with warm-up-like behavior, proves convergence
+upper/lower bounds, and tests the proposed relationship on language and vision
+models. This audit checks the literal quantifiers and displayed constants
+before considering repaired interpretations.
 
-ICML 2026 agent reproduction workspace for OpenReview paper `a6fo32UnpU`.
+## Reproducing the evidence
+
+All formal nodes use one pinned Python 3.12 environment and the fixed command:
+
+```bash
+uv run --frozen python -m warmup_repro.run
+```
+
+The dispatcher selects the committed stage. Claims 1–5 use symbolic
+certificates, complete Hessians, analytic or high-precision checks, assumption
+audits, and controls that remove the proposed contradiction mechanism. Claim 6
+uses separate expensive routes because the named models and data are much
+larger; a short or substituted trajectory is never promoted to a full-paper
+verification.
+
+Useful entry points:
+
+- [Current verification entrypoint](CURRENT.md)
+- [Claim-by-claim pages](pages/claims/)
+- [Illustrated report](reports/warmup_claims/report.md)
+- [Release report](release_report.md)
+- [Visibility matrix](visibility_matrix.md)
+- [Machine-readable evidence](evidence/)
+- [Warm-up notebook](notebooks/warmup_claims.py)
+
+## Branch organization
+
+`main` is the publication surface. The descriptive `audit/*`,
+`historical/*`, and `release/*` branches preserve the experiment lineage. The
+complete old-to-new mapping, including the historical `orx/*` names, is in
+[`branch-audit.md`](branch-audit.md).
+
+## Scope and limitations
+
+- Claim 1 verifies the exact definition and inclusion, while separately
+  recording that the printed Proposition B.2 closure constants are defective.
+- Claims 2–5 target the literal paper statements and identify assumption,
+  constant, inequality-direction, or domain-guard defects. A repaired theorem
+  is not treated as falsified by the counterexample to the printed theorem.
+- Claim 6 uses exact parameter-count model constructions where possible, but
+  does not reproduce the paper’s full tokenizer, estimator ordering, batch,
+  sequence lengths, precision, or training horizons. Its honest status is
+  `BLOCKED`.
+- The live score remains `5/12` until an evaluator judges the published
+  revision. No score increase is claimed here.
+
+## Paper
+
+- **Title:** Why Do We Need Warm-up? A Theoretical Perspective
+- **Authors:** Foivos Alimisis, Rustem Islamov, Aurelien Lucchi
+- **Paper:** [arXiv:2510.03164](https://arxiv.org/abs/2510.03164)
+- **Author-hosted PDF:** [warmup.pdf](https://rustem-islamov.github.io/files/publications/Warmup/warmup.pdf)
+- **Submission:** ICML 2026; arXiv v1 submitted October 3, 2025, v2 revised June 28, 2026
+- **Paper identifier:** `a6fo32UnpU`
+
+## Citation
+
+```bibtex
+@misc{alimisis2025warmup,
+  title         = {Why Do We Need Warm-up? A Theoretical Perspective},
+  author        = {Alimisis, Foivos and Islamov, Rustem and Lucchi, Aurelien},
+  year          = {2025},
+  eprint        = {2510.03164},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  note          = {ICML 2026; revised version arXiv:2510.03164v2}
+}
+```
+
+## Thank you
+
+Thank you to Foivos Alimisis, Rustem Islamov, and Aurelien Lucchi for making a
+subtle optimization question concrete through a shared smoothness framework,
+explicit theorem statements, and named-model experiments. The paper’s detailed
+assumptions and public-facing artifacts made it possible to audit the literal
+claims, find where printed statements need qualification, and preserve the
+important distinction between a counterexample and an incomplete reproduction.
+
+## Attribution
+
+This independent audit is maintained by [MachineLearning-Nerd](https://github.com/MachineLearning-Nerd).
+It is not affiliated with or endorsed by the paper’s authors.
