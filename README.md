@@ -13,6 +13,18 @@ The six audited claim groups are assessed as one `VERIFIED`, four `FALSIFIED`,
 and one `BLOCKED`. The previous live judge score was `5/12`; the `5–10/12`
 range is a forecast, not a new judge result.
 
+## Audit record
+
+- Overall status: `PARTIAL_C1_VERIFIED_C2_C3_C4_C5_FALSIFIED_C6_BLOCKED_HISTORICAL_SCORE_5_OF_12_NO_CURRENT_SCORE`.
+- Claim 1 verifies the exact definition/inclusion only; its separate Proposition B.2 constant check is rejected.
+- Claims 2–5 falsify the printed statements within their exact scopes; repaired or rank-restored variants are not declared false.
+- Claim 6 remains `BLOCKED` because the named-model routes use material protocol substitutions or failed before science execution.
+- Current score claim: none; `5/12` is historical evaluator context only.
+- Publication and author endorsement are not claimed.
+- Branch contract: 14 descriptive branches including `main`; no public `orx/*` branch remains.
+- All 35 pre-dossier reachable commits use `MachineLearning-Nerd <MachineLearning-Nerd@users.noreply.github.com>`.
+- Machine-checkable records: [claims.json](claims.json), [reproduction_verdicts.json](reproduction_verdicts.json), [EVIDENCE_MANIFEST.json](EVIDENCE_MANIFEST.json), and [verify_final.py](verify_final.py).
+
 | Claim | Paper statement tested | How this audit produces the result | Evidence and verdict |
 | --- | --- | --- | --- |
 | 1 | Definition 3.1 defines `(H0,H1)`-smoothness, and Proposition B.1 includes ordinary `L`-smoothness as `H1=0`. | Reconstruct the inclusion symbolically, solve the `(L0,L1)` extremal constant, and compare a complete 48-dimensional Hessian with an independent HVP power estimate. A separate control checks the printed Proposition B.2 sum constants. | Exact definition/inclusion certificate and HVP relative error `8.95e-11`. The separate B.2 constants are rejected because they can make `H0<0`. **VERIFIED for the stated definition/inclusion.** |

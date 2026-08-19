@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+title: "Independent reproduction audit of Why Do We Need Warm-up? A Theoretical Perspective"
+message: "Please cite the original paper and this independent audit when reusing the evidence package."
+type: software
+authors:
+  - family-names: Jinjala
+    given-names: Dinesh
+    affiliation: MachineLearning-Nerd
+    email: MachineLearning-Nerd@users.noreply.github.com
+repository-code: https://github.com/MachineLearning-Nerd/icml26-why-do-we-need-warm-up
+url: https://github.com/MachineLearning-Nerd/icml26-why-do-we-need-warm-up
+version: 2026.08.19
+date-released: 2026-08-19
+license: MIT
+keywords:
+  - learning-rate warm-up
+  - smoothness
+  - optimization theory
+  - reproduction audit
+references:
+  - type: article
+    title: "Why Do We Need Warm-up? A Theoretical Perspective"
+    authors:
+      - family-names: Alimisis
+        given-names: Foivos
+      - family-names: Islamov
+        given-names: Rustem
+      - family-names: Lucchi
+        given-names: Aurelien
+    year: 2025
+    url: https://arxiv.org/abs/2510.03164
+    doi: 10.48550/arXiv.2510.03164

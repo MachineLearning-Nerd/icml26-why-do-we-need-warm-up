@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "title": "Why Do We Need Warm-up? A Theoretical Perspective",
+    "arxiv": "2510.03164",
+    "submission": "a6fo32UnpU",
+    "source_version": "arXiv v2",
+    "authors": ["Foivos Alimisis", "Rustem Islamov", "Aurelien Lucchi"]
+  },
+  "overall_status": "PARTIAL_C1_VERIFIED_C2_C3_C4_C5_FALSIFIED_C6_BLOCKED_HISTORICAL_SCORE_5_OF_12_NO_CURRENT_SCORE",
+  "claims": [
+    {
+      "id": "C1",
+      "name": "definition_and_ordinary_smoothness_inclusion",
+      "status": "VERIFIED_SCOPED",
+      "paper_anchor": "Definition 3.1 and Proposition B.1",
+      "production": ["warmup_repro/certificates.py", "evidence/claim1_definition.json", ".openresearch/artifacts/certificates"],
+      "controls": ["complete 48-dimensional Hessian versus independent HVP", "printed Proposition B.2 constants rejected"],
+      "scope": "The definition and ordinary-smoothness inclusion pass; the separate defective B.2 closure constants do not."
+    },
+    {
+      "id": "C2",
+      "name": "deep_linear_global_smoothness",
+      "status": "FALSIFIED_SCOPED",
+      "paper_anchor": "Proposition 3.2(ii)",
+      "production": ["warmup_repro/counterexamples_exact.py", "evidence/claim2_counterexample.json", "pages/claims/claim-2.md"],
+      "controls": ["full Hessian agrees with symbolic 2t²", "identity-X rank control removes contradiction"],
+      "scope": "The proposition is false as printed because it omits a full-row-rank condition; a rank-restored statement is not falsified."
+    },
+    {
+      "id": "C3",
+      "name": "cross_entropy_hessian_constants",
+      "status": "FALSIFIED_SCOPED",
+      "paper_anchor": "Proposition 3.3(ii), Equation (31)",
+      "production": ["warmup_repro/proposition33_counterexample.py", "evidence/claim3_counterexample.json", "pages/claims/claim-3.md"],
+      "controls": ["autograd, analytic eigensystem, and 80-digit Hessian agree", "a=0 control removes contradiction"],
+      "scope": "The printed constants are contradicted; the corrected omitted Clinear*f* term is not tested false."
+    },
+    {
+      "id": "C4",
+      "name": "fixed_step_iteration_lower_bound",
+      "status": "FALSIFIED_SCOPED",
+      "paper_anchor": "Theorem 4.1(3), Appendix J, Equations (63) and (65)",
+      "production": ["warmup_repro/theorem41_class_stable.py", "evidence/claim4_counterexample.json", "pages/claims/claim-4.md"],
+      "controls": ["C2/strong-convexity/PL/smoothness audit", "epsilon=0.1 non-contradictory control"],
+      "scope": "The fixed-step lower bound is contradicted under its stated cap; the adaptive Theorem 4.2 upper bound is not contradicted."
+    },
+    {
+      "id": "C5",
+      "name": "pl_iteration_expression",
+      "status": "FALSIFIED_SCOPED",
+      "paper_anchor": "Theorem 4.3 displayed iteration bound",
+      "production": ["warmup_repro/counterexamples_exact.py", "evidence/claim5_counterexample.json", "pages/claims/claim-5.md"],
+      "controls": ["zero-gap epsilon=1 counterexample", "positive-gap epsilon=1e-6 control"],
+      "scope": "The displayed formula is false without an epsilon-domain guard; the corrected small-epsilon recurrence is not contradicted."
+    },
+    {
+      "id": "C6",
+      "name": "named_model_local_smoothness_relationship",
+      "status": "BLOCKED_PROTOCOL",
+      "paper_anchor": "Section 3.2, Figure 1, Appendix K.1 and Figure K.2",
+      "production": ["warmup_repro/fineweb_lm.py", "warmup_repro/imagenet32.py", "warmup_repro/proxy_calibration.py", "warmup_repro/literal_proxy.py"],
+      "controls": ["parameter-count checks", "float32/float64 norm checks", "permutation and same-batch controls", "two pre-science uv failures retained"],
+      "scope": "No route matches the full tokenizer, estimator, batch, sequence, precision, model, and horizon protocol, so neither verification nor valid falsification is claimed."
+    }
+  ]
+}

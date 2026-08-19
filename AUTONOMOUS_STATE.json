@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "paper": "Why Do We Need Warm-up? A Theoretical Perspective",
+  "arxiv": "2510.03164",
+  "submission": "a6fo32UnpU",
+  "phase": "scoped_printed_claim_audit_published_claim6_protocol_blocked",
+  "overall_status": "PARTIAL_C1_VERIFIED_C2_C3_C4_C5_FALSIFIED_C6_BLOCKED_HISTORICAL_SCORE_5_OF_12_NO_CURRENT_SCORE",
+  "next_action": "Preserve the exact counterexamples and wait for an external evaluator; only resume Claim 6 with a fully authorized run matching the paper's tokenizer, estimator, batch, sequence, precision, model, and horizon protocol.",
+  "current_score_claim": false,
+  "publication_allowed": false,
+  "author_endorsement_claimed": false,
+  "historical_external_result": {
+    "score": "5/12",
+    "fresh_score_pending": true
+  },
+  "source": {
+    "html_sha256": "e73c02ea9d475c9f200d2719867b03b4557c2b3e1169953a12513601f0d86e47",
+    "pdf_sha256": "736bb3c117b8b698edbd4e0b567c5e3b673539e592d4c21da89a667114193b30",
+    "full_text_sha256": "6bd19f5a61acf281a0a4d83738006eee2a2087711a317c87c3235143a40eccc3"
+  },
+  "repository": {
+    "owner": "MachineLearning-Nerd",
+    "canonical_email": "MachineLearning-Nerd@users.noreply.github.com",
+    "github": "https://github.com/MachineLearning-Nerd/icml26-why-do-we-need-warm-up",
+    "recovery_bundle_sha256": "bc7fe60a4169993c6bd17b36958fd65481978ea2e538ef9c88d845aad0a3602b"
+  }
+}
